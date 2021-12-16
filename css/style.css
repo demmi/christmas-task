@@ -36,7 +36,7 @@ a {
 }
 
 .start-page-container {
-    min-height: 100vh;
+    min-height: calc(100vh - 70px);
 }
 
 .start-page-content {
@@ -105,18 +105,17 @@ a {
     backdrop-filter: blur(0px);
 }
 
-/* Header */
+/* toys page */
 
-.header {
+.toys-page {
     background-color: #121C1E;
-    padding: 0 10px;
 }
 
-.header-container {
+.toys-page-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 80px;
+    align-items: flex-start;
+    height: calc(100vh - 70px);
 }
 
 .nav-logo {
@@ -134,30 +133,24 @@ a {
     align-items: center;
 }
 
-.toys-page,
+.toys-page-link,
 .spruce-page {
     display: block;
     color: #fff;
     text-transform: uppercase;
-    padding: 20px;
     transition: .3s;
 }
 
-.toys-page:hover,
+.toys-page-link:hover,
 .spruce-page:hover {
     color: #278D9F;
 }
 
 
-.header-controls {
-    display: flex;
-    align-items: center;
-}
-
 .nav-search {
     outline: 0;
-    width: 380px;
-    height: 40px;
+    width: 254px;
+    height: 36px;
     padding: 5px 25px;
     margin: 10px 0;
     margin-right: 30px;
@@ -169,35 +162,56 @@ a {
     background-image: url("../assets/svg/search.svg");
     background-size: 20px;
     background-repeat: no-repeat;
-    background-position: 330px center;
+    background-position: 200px center;
 }
 
 ::-webkit-search-cancel-button {
     display: none;
 }
 
-
-.nav-count {
-    width: 48px;
-    height: 60px;
-    background-image: url("../assets/svg/ball-2.svg");
-    background-size: 48px 60px;
-    background-position: left -8px;
-    background-repeat: no-repeat;
-    transition: .3s;
+.toys-block {
+    padding: 0 20px;
 }
 
-.nav-count span {
-    display: inline-block;
-    min-width: 40px;
-    height: 40px;
-    margin-top: 10px;
-    margin-left: 4px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 20px;
-    background-color: #278D9F;
+.toys-block-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 36px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 222px;
+    height: 342px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #278D9F;
+    background-color: #B3F6FF4D;
+    cursor: pointer;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card-img {
+    width: 84px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.card-description {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.card-description p span {
+    padding-left: 7px;
 }
 
 
