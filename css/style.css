@@ -116,7 +116,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: calc(100vh - 70px);
+    /* height: calc(100vh - 70px); */
 }
 
 .aside-container {

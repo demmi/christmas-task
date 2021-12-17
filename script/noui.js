@@ -22,12 +22,12 @@ countSlider.noUiSlider.on('update', (values, handle, unencoded, isTap, positions
 });
 
 noUiSlider.create(yearSlider, {
-  start: [1960, 2021],
+  start: [1960, 2020],
   step: 1,
   connect: true,
   range: {
     min: 1960,
-    max: 2021,
+    max: 2020,
   },
 });
 
