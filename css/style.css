@@ -227,7 +227,7 @@ a {
     filter: invert(20%);
 }
 
-.shape-select button.active {
+.shape-button-active {
     filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
 }
 
@@ -252,6 +252,7 @@ a {
 }
 
 .color-select button {
+    position: relative;
     width: 30px;
     height: 30px;
     margin: 15px 10px;
@@ -286,6 +287,17 @@ a {
 .color-select button:hover {
     border: 2px solid gray;
     filter: invert(20%);
+}
+
+.color-button-active:after {
+    content: '\02DF';
+    font-size: 44px;
+    line-height: 0;
+    display: block;
+    position: relative;
+    height: 6px;
+    top: 13px;
+    left: 0px;
 }
 
 .count-slider-container,
@@ -393,6 +405,7 @@ a {
 
 .toys-block {
     padding: 0 20px;
+    min-height: calc(100vh - 70px);
 }
 
 .toys-block-cards {
