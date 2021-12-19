@@ -114,7 +114,7 @@ a {
 
 .toys-page-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     /* height: calc(100vh - 70px); */
 }
@@ -317,7 +317,6 @@ a {
     width: 14px;
     top: -5px;
     right: -9px;
-    /* half the width */
     border-radius: 9px;
 }
 
@@ -404,6 +403,7 @@ a {
 /* Toys block */
 
 .toys-block {
+    margin-left: 20px;
     padding: 0 20px;
     min-height: calc(100vh - 70px);
 }
@@ -412,7 +412,14 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 36px;
+}
+
+.toys-block-cards:after {
+    content: '';
+    flex: auto;
+    max-width: 222px;
+    min-width: 222px;
+    margin: 10px;
 }
 
 .card {
@@ -422,6 +429,7 @@ a {
     width: 222px;
     height: 342px;
     padding: 10px;
+    margin: 10px;
     border-radius: 10px;
     border: 1px solid #278D9F;
     background-color: #B3F6FF4D;
