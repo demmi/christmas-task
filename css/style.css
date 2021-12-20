@@ -131,6 +131,8 @@ a {
 }
 
 .aside-logo {
+    background-color: transparent;
+    border: none;
     fill: white;
     transition: .3s;
 }
@@ -167,12 +169,12 @@ a {
     background-image: url("../assets/svg/search.svg");
     background-size: 20px;
     background-repeat: no-repeat;
-    background-position: 200px center;
+    background-position: 180px center;
 }
 
-::-webkit-search-cancel-button {
+/* ::-webkit-search-cancel-button {
     display: none;
-}
+} */
 
 .aside-filter-select {
     display: flex;

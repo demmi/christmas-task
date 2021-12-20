@@ -1,4 +1,10 @@
 import data from './data.js';
+import './nouislider.js';
+
+const startBtn = document.querySelector('.start-page-btn');
+const startPage = document.querySelector('.start-page');
+const toysPage = document.querySelector('.toys-page');
+const toHomeBtn = document.querySelector('.aside-logo');
 
 const cardsBlock = document.querySelector('.toys-block-cards');
 
@@ -11,6 +17,7 @@ const sizeBtns = document.querySelectorAll('.aside-filter-size input[type="check
 const favBtns = document.querySelector('.aside-filter-favorite input[type="checkbox"]');
 const resetBtn = document.querySelector('.reset-filter');
 const sortSelector = document.querySelector('.aside-sort-select');
+const searchField = document.querySelector('.aside-search');
 
 const maxYear = Math.max.apply(null, data.map((elem) => elem.year));
 const minYear = Math.min.apply(null, data.map((elem) => elem.year));
@@ -23,7 +30,19 @@ let color = [];
 let shape = [];
 let size = [];
 let favorite = false;
-let sortFunc = (a, b) => 0;
+let sortFunc = () => 0;
+let searchValue = '';
+let bookmarks = [];
+
+function gotoStart() {
+  startPage.classList.add('hide');
+  toysPage.classList.remove('hide');
+}
+
+function gotoHome() {
+  startPage.classList.remove('hide');
+  toysPage.classList.add('hide');
+}
 
 noUiSlider.create(countSlider, {
   start: [minCount, maxCount],
@@ -36,17 +55,6 @@ noUiSlider.create(countSlider, {
   },
 });
 
-const countNodes = [
-  document.querySelector('.count-min'),
-  document.querySelector('.count-max'),
-];
-
-countSlider.noUiSlider.on('update', (values, handle, unencoded, isTap, positions) => {
-  countNodes[handle].innerHTML = values[handle].split('.')[0];
-  count[handle] = +values[handle].split('.')[0];
-  render();
-});
-
 noUiSlider.create(yearSlider, {
   start: [minYear, maxYear],
   step: 1,
@@ -55,17 +63,6 @@ noUiSlider.create(yearSlider, {
     min: minYear,
     max: maxYear,
   },
-});
-
-const yearNodes = [
-  document.querySelector('.year-min'),
-  document.querySelector('.year-max'),
-];
-
-yearSlider.noUiSlider.on('update', (values, handle, unencoded, isTap, positions) => {
-  yearNodes[handle].innerHTML = values[handle].split('.')[0];
-  year[handle] = +values[handle].split('.')[0];
-  render();
 });
 
 function isCount(elem) {
@@ -92,9 +89,21 @@ function isFavorite(elem) {
   return !favorite || elem.favorite;
 }
 
+function isSearch(elem) {
+  return elem.name.toLowerCase().includes(searchValue.toLowerCase());
+}
+
+function cardToBookmark() {
+  if (bookmarks.includes(this.dataset.num)) {
+    bookmarks = bookmarks.filter((item) => item !== this.dataset.num);
+  } else {
+    bookmarks.push(this.dataset.num);
+  }
+}
+
 function render() {
-  const cards = data.filter((elem) => isCount(elem) && isYear(elem) && isColor(elem) && isShape(elem) && isSize(elem) && isFavorite(elem)).sort(sortFunc).reduce((arr, elem) => `${arr}
-<div class="card">
+  const cards = data.filter((elem) => isCount(elem) && isYear(elem) && isColor(elem) && isShape(elem) && isSize(elem) && isFavorite(elem) && isSearch(elem)).sort(sortFunc).reduce((arr, elem) => `${arr}
+<div class="card" data-num="${elem.num}">
   <h2 class="card-title">${elem.name}</h2>
   <img class="card-img" src="./assets/toys/${elem.num}.png" alt="toy">
   <div class="card-description">
@@ -106,24 +115,59 @@ function render() {
     <p class="favorite">Любимая:<span>${elem.favorite ? 'да' : 'нет'}</span></p>
   </div>
 </div>`, '');
-
-  cardsBlock.innerHTML = cards;
+  cardsBlock.innerHTML = cards.length === 0 ? '<p>Нет игрушек, отвечающих критериям поиска</p>' : cards;
+  const cardsArr = document.querySelectorAll('.card');
+  cardsArr.forEach((card) => card.addEventListener('click', cardToBookmark));
 }
+
+const countNodes = [
+  document.querySelector('.count-min'),
+  document.querySelector('.count-max'),
+];
+
+countSlider.noUiSlider.on('update', (values, handle) => {
+  countNodes[handle].innerHTML = +values[handle];
+  count[handle] = +values[handle];
+  render();
+});
+
+const yearNodes = [
+  document.querySelector('.year-min'),
+  document.querySelector('.year-max'),
+];
+
+yearSlider.noUiSlider.on('update', (values, handle) => {
+  yearNodes[handle].innerHTML = +values[handle];
+  year[handle] = +values[handle];
+  render();
+});
 
 function shapeSelect() {
   this.classList.toggle('shape-button-active');
-  shape.includes(this.dataset.shape) ? shape = shape.filter((item) => item !== this.dataset.shape) : shape.push(this.dataset.shape);
+  if (shape.includes(this.dataset.shape)) {
+    shape = shape.filter((item) => item !== this.dataset.shape);
+  } else {
+    shape.push(this.dataset.shape);
+  }
   render();
 }
 
 function colorSelect() {
   this.classList.toggle('color-button-active');
-  color.includes(this.dataset.color) ? color = color.filter((item) => item !== this.dataset.color) : color.push(this.dataset.color);
+  if (color.includes(this.dataset.color)) {
+    color = color.filter((item) => item !== this.dataset.color);
+  } else {
+    color.push(this.dataset.color);
+  }
   render();
 }
 
 function sizeSelect() {
-  size.includes(this.dataset.size) ? size = size.filter((item) => item !== this.dataset.size) : size.push(this.dataset.size);
+  if (size.includes(this.dataset.size)) {
+    size = size.filter((item) => item !== this.dataset.size);
+  } else {
+    size.push(this.dataset.size);
+  }
   render();
 }
 
@@ -135,19 +179,19 @@ function favSelect() {
 function sortFunction() {
   switch (this.value) {
     case 'disabled':
-      sortFunc = (a, b) => 0;
+      sortFunc = () => 0;
       break;
     case 'name-max':
-      sortFunc = (a, b) => a.name > b.name ? 1 : -1;
+      sortFunc = (a, b) => (a.name > b.name ? 1 : -1);
       break;
     case 'name-min':
-      sortFunc = (a, b) => a.name < b.name ? 1 : -1;
+      sortFunc = (a, b) => (a.name < b.name ? 1 : -1);
       break;
     case 'count-max':
-      sortFunc = (a, b) => +a.count > +b.count ? 1 : -1;
+      sortFunc = (a, b) => (+a.count > +b.count ? 1 : -1);
       break;
     case 'count-min':
-      sortFunc = (a, b) => +a.count < +b.count ? 1 : -1;
+      sortFunc = (a, b) => (+a.count < +b.count ? 1 : -1);
       break;
     default:
       break;
@@ -155,22 +199,34 @@ function sortFunction() {
   render();
 }
 
-
+function searchText() {
+  searchValue = this.value;
+  render();
+}
 
 function resetSelect() {
   count = [minCount, maxCount];
   year = [minYear, maxYear];
   color = [];
   shape = [];
-  size = [];
+  /* size = []; */
   favorite = false;
-  sortFunc = (a, b) => 0;
+  sortFunc = () => 0;
   countSlider.noUiSlider.set([minCount, maxCount]);
   yearSlider.noUiSlider.set([minYear, maxYear]);
   shapeBtns.forEach((elem) => elem.classList.remove('shape-button-active'));
   colorBtns.forEach((elem) => elem.classList.remove('color-button-active'));
-  sizeBtns.forEach((elem) => elem.checked = false);
+  sizeBtns.forEach((elem) => {
+    /* const element = elem;
+    element.checked = false; */
+    if (elem.checked) {
+      elem.click();
+    }
+  });
   favBtns.checked = false;
+  sortSelector.value = 'disabled';
+  searchValue = '';
+  searchField.value = '';
   render();
 }
 
@@ -180,3 +236,7 @@ sizeBtns.forEach((elem) => elem.addEventListener('change', sizeSelect));
 favBtns.addEventListener('change', favSelect);
 resetBtn.addEventListener('click', resetSelect);
 sortSelector.addEventListener('change', sortFunction);
+searchField.addEventListener('input', searchText);
+
+startBtn.addEventListener('click', gotoStart);
+toHomeBtn.addEventListener('click', gotoHome);
