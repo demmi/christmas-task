@@ -1,0 +1,28 @@
+.count-values {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.count-slider-container {
+    height: 3px;
+    border: none;
+}
+
+.count-slider-container .noUi-connect {
+    background: #278D9F;
+}
+
+.count-slider-container .noUi-handle {
+    height: 14px;
+    width: 14px;
+    top: -5px;
+    right: -9px;
+    border-radius: 9px;
+}
+
+.count-slider-container .noUi-handle:after,
+.count-slider-container .noUi-handle:before {
+    display: none;
+}

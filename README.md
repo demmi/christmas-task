@@ -1,1 +1,1 @@
-# christmas-task
+# Web Dev mentoring repository

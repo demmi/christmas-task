@@ -1,0 +1,39 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 222px;
+    height: 342px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #278D9F;
+    background-color: #B3F6FF4D;
+    cursor: pointer;
+}
+
+.card-active {
+    border-color: gold;
+    background-color: #ffd7001f;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card-img {
+    width: 84px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.card-description {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.card-description p{
+    padding-left: 7px;
+}

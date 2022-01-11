@@ -1,0 +1,6 @@
+.toys-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}

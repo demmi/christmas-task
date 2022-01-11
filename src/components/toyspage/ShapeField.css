@@ -1,0 +1,22 @@
+.shape-select {
+    display: flex;
+}
+.shape-select button {
+    display: flex;
+    justify-content: center;
+    margin: 10px 7px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    fill: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.shape-select button:hover {
+    fill: dimgray;
+}
+
+.shape-button-active {
+    fill: goldenrod !important;
+}

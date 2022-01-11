@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Neucha';
+    src: url(@/assets/font/Neucha-Regular.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121C1E;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    font-family: Neucha;
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.container {
+    max-width: 1720px;
+    margin: 0 auto;
+}

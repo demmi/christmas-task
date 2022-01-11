@@ -1,0 +1,16 @@
+.aside-search {
+    outline: 0;
+    width: 254px;
+    height: 36px;
+    padding: 5px 25px;
+    margin: 10px 30px 10px 0;
+    border-radius: 20px;
+    border: 1px solid #278D9F;
+    color: #fff;
+    font-size: 18px;
+    background-color: #1f707f4d;
+    background-image: url("../../assets/svg/search.svg");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 180px center;
+}

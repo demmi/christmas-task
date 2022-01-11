@@ -1,0 +1,48 @@
+.color-select button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: 15px 10px;
+    border: 2px solid #278D9F;
+    border-radius: 5px;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.color-select button:nth-child(1) {
+    background-color: white;
+}
+
+.color-select button:nth-child(2) {
+    background-color: yellow;
+}
+
+.color-select button:nth-child(3) {
+    background-color: red;
+}
+
+.color-select button:nth-child(4) {
+    background-color: blue;
+}
+
+.color-select button:nth-child(5) {
+    background-color: green;
+}
+
+.color-select button:hover {
+    border: 2px solid gray;
+    filter: invert(20%);
+}
+
+.color-button-active:after {
+    content: '\02DF';
+    font-size: 44px;
+    line-height: 0;
+    display: block;
+    position: relative;
+    height: 6px;
+    top: 13px;
+    left: 0px;
+}
