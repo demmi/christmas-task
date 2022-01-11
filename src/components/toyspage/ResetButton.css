@@ -1,0 +1,13 @@
+.reset-filter {
+    margin-top: 20px;
+    width: 200px;
+    height: 35px;
+    border: 2px solid #278D9F;
+    border-radius: 30px;
+    background-color: #1f707f4d;
+    font-weight: lighter;
+    font-size: 16px;
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+}

@@ -1,0 +1,73 @@
+.start-page {
+    height: calc(100vh - 150px);
+    background-image: url("@/assets/bg.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.start-page-container {
+    position: relative;
+    padding: 0 20px;
+}
+
+.start-page__img1 {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    left: 15vw;
+    top: 150px;
+}
+
+.start-page__img2 {
+    position: absolute;
+    width: 240px;
+    height: 300px;
+    top: 150px;
+    right: 15vw;
+}
+
+.start-page-title {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 600px;
+    height: 250px;
+    color: white;
+    font-size: 52px;
+    font-weight: normal;
+    border: 2px solid #278D9F;
+    border-radius: 30px;
+    background-color: #1f707f4d;
+    backdrop-filter: blur(10px);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 150px;
+}
+
+.start-page-btn {
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    border: 2px solid #278D9F;
+    border-radius: 30px;
+    background-color: #1f707f4d;
+    backdrop-filter: blur(10px);
+    font-weight: lighter;
+    font-size: 22px;
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 500px;
+}
+
+.start-page-btn:hover {
+    backdrop-filter: blur(0px);
+}

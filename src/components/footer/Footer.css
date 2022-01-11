@@ -1,0 +1,31 @@
+.footer {
+
+    height: 70px;
+    padding: 0 20px;
+    background-color: #121C1E;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-github-link {
+    font-size: 14px;
+    padding: 0 20px;
+    transition: .3s;
+}
+
+.footer-github-link:hover {
+    color: #278D9F;
+}
+
+.rss-logo svg {
+    fill: white;
+    transition: .3s;
+}
+
+.rss-logo svg:hover {
+    fill: #278D9F;
+}

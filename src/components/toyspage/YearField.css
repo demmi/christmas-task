@@ -1,0 +1,28 @@
+.year-values {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.year-slider-container {
+    height: 3px;
+    border: none;
+}
+
+.year-slider-container .noUi-connect {
+    background: #278D9F;
+}
+
+.year-slider-container .noUi-handle {
+    height: 14px;
+    width: 14px;
+    top: -5px;
+    right: -9px;
+    border-radius: 9px;
+}
+
+.year-slider-container .noUi-handle:after,
+.year-slider-container .noUi-handle:before {
+    display: none;
+}
